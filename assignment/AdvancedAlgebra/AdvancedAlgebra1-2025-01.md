@@ -348,21 +348,21 @@ E_{ij}B=
 \begin{pmatrix}
 0 &\cdots & 0\\
 \vdots&\ddots&\vdots\\
-b_{i1}&\cdots&b_{in}\\
+(第i行)b_{j1}&\cdots&b_{jn}\\
 \vdots&\ddots&\vdots\\
 0 &\cdots & 0
-\end{pmatrix}为第i行等于B第i行其余全为0的n阶方阵，\\
+\end{pmatrix}为第i行等于B第j行其余全为0的n阶方阵，\\
 BE_{ij}=
 \begin{pmatrix}
-0 &\cdots &b_{1j}&\cdots & 0\\
+0 &\cdots &(第i列)b_{1j}&\cdots & 0\\
 \vdots&\ddots &\vdots&\ddots&\vdots\\
 0&\cdots&b_{nj}&\cdots & 0
-\end{pmatrix}为第j列等于B第j列其余全为0的n阶方阵。
+\end{pmatrix}为第i列等于B第j列其余全为0的n阶方阵。
 $$
 ###### （b）设 i, j 不相等, 请说明$(I_n + cE_{ji})B 与 B$ 的初等行变换的关系.
-由分配律可知，$(I_n+cE_{ji})B$相当于B的初等行变换中第j行乘以c倍后加到了i行上。
+答：由分配律可知，$(I_n+cE_{ji})B$相当于B的初等行变换中第j行乘以c倍后加到了i行上。
 ###### （c）设 i, j 不相等, 请说明$B(I_n + cE_{ji}) 与 B$ 的初等列变换的关系.
-同样由分配律可知，$B(I_n+cE_{ji})$相当于B的初等列变换中的第i列乘以c倍后加到第j列上。
+答：同样由分配律可知，$B(I_n+cE_{ji})$相当于B的初等列变换中的第i列乘以c倍后加到第j列上。
 
 ##### (6) 请计算并总结规律
 $$
@@ -496,7 +496,7 @@ $$
 \end{pmatrix}=
 \begin{pmatrix}
 \cos(\alpha+\beta ) & -\sin(\alpha+\beta )\\
-\sin(\alpha+\beta )& \cos(\alpha+\beta )\\
+\sin(\alpha+\beta )& \cos(\alpha+\beta )
 \end{pmatrix}
 $$
 
@@ -509,25 +509,31 @@ $$
 - 上三角阵：主对角线及以上元素不全为0，以下全为0
 - 严格上三角阵：主对角线以上元素不全为0，以下全为0
 #### 2 求证: 上三角阵乘上三角阵还是上三角阵, 严格上三角乘上三角还是严格上三角.
+证：
+设A、B为n阶上三角阵,$C=AB,则c_{ij}=\sum_{k=1}^{n}a_{ik}b_{kj}$
+- 要证C为上三角矩阵，需要证C对角线以下不存在非零元素，
+$即当i>j时,若c_{ij}\neq 0,则需要a_{ik}\neq 0 且b_{kj}\neq 0,k\in[1,n]$；
+由上三角阵性质可知，
 $$
-上三角阵乘上三角阵，设A_{ij},B_{jk}，则矩阵中(c,d)处元素为\sum_{m=1}^{n}a_{cm}b_{md}\\
-对角线以下，若要有元素非0,则要存在a_{cm}b_{md}不等于0，即a_{cm}，b_{md}都不为0由严格上三角阵性质可知,
-a_{cm}不等于0需要c小于等于m\\
-三角阵性质可知,
-b_{md}不等于0需要m小于等于d\\
-由对角线以下可知，
-c>d\\
-c小于等于m，m小于等于d，但c又>d矛盾，则对角线及以下不可能存在非零元素\\
-对于严格上三角阵乘上三角阵，设严格A_{ij},非严格B_{jk}，则矩阵中(c,d)处元素为\sum_{m=1}^{n}a_{cm}b_{md}\\
-对角线及以下，若要有元素非0,则要存在a_{cm}b_{md}不等于0，即a_{cm}，b_{md}都不为0由严格上三角阵性质可知,
-a_{cm}不等于0需要c<m\\
-三角阵性质可知,
-b_{md}不等于0需要m<d\\
-由对角线及以下可知，
-c大于等于d\\
-c<m，m<d，但c又大于等于d矛盾，则对角线及以下不可能存在非零元素\\
-证毕\\
+\begin{cases}
+i\le k & \quad 当a_{ik}\neq 0时\\
+k\le j & \quad 当b_{kj}\neq 0时
+\end{cases}，
 $$
+$条件i>j与条件i\le k且k\le j矛盾，故c_{ij}=0$，即C的对角线以下不存在非零元素。
+
+- 设A为严格上三角阵，要证C为严格上三角矩阵，需要证C对角线及以下不存在非零元素，
+与上面类似
+$$
+\begin{cases}
+i< k & \quad 当a_{ik}\neq 0时\\
+k\le j & \quad 当b_{kj}\neq 0时
+\end{cases}，
+$$
+$条件i>j与条件i<k且k\le j矛盾，故c_{ij}=0$，即C的对角线及以下不存在非零元素。
+
+证毕
+
 #### 3 关于转置运算与对称矩阵, 请回答如下问题:
 ##### (1) 请陈述矩阵转置的概念.
 答：将矩阵的行向量变为列向量，列向量变为行向量
@@ -650,22 +656,8 @@ $$
 \sin\theta & \cos\theta
 \end{pmatrix}^n\cdot
 $$
-解：
+解：根据之前的题可知两个方阵合成后仅有角度翻倍的变化，则重复合成后得
 $$
-\begin{pmatrix}
-\cos\theta & -\sin\theta \\
-\sin\theta & \cos\theta
-\end{pmatrix}
-\cdot
-\begin{pmatrix}
-\cos\theta & -\sin\theta \\
-\sin\theta & \cos\theta
-\end{pmatrix}=
-\begin{pmatrix}
-\cos(2\theta ) & -\sin(2\theta )\\
-\sin(2\theta )& \cos(2\theta )\\
-\end{pmatrix}\\
-可知两个方阵合成后仅有角度翻倍的变化，则重复合成后得\\
 \begin{pmatrix}
 \cos{n\theta} & -\sin{n\theta} \\
 \sin{n\theta} & \cos{n\theta}
@@ -703,9 +695,9 @@ N^3=0\\
 A^n=(\lambda I_n+N)^n
 =(\lambda I_n)^n+n*(\lambda I_n)^{n-1}*N
 +\frac{n(n - 1)}{2}*(\lambda I_n)^{n-2}*N^2
-+(\cdots)*N^3
++(\cdots)*N^3+\cdots
 $$
-因第四项及以后因都含N^3,故全部为0,则前三项相加即可得到上式,得证
+因第四项及以后都含$N^3$,乘积全部为0,故前三项相加即可得到上式,证毕。
 
 #### 5 一个方阵的迹 (trace) 是其对角线元素之和，设$A, B$为方阵,
 $$
@@ -725,12 +717,12 @@ d_{ii}=\sum_{j=1}^{n}b_{ij}a_{ji}\\
 tr\ C=\sum_{i=1}^{n}c_{ii}=\sum_{i=1}^{n}\sum_{j=1}^{n}a_{ij}b_{ji},
 tr\ D=\sum_{i=1}^{n}d_{ii}=\sum_{i=1}^{n}\sum_{j=1}^{n}b_{ij}a_{ji}\\
 $$
-因$tr\ C与tr\ D$的累加和顺序不同但结果相同，故$tr(AB)=tr(BA)$，得证
+因$tr\ C与tr\ D$的累加和顺序不同但结果相同，故$tr(AB)=tr(BA)$，证毕。
 
 ##### (3) 设$A = (a_{ij}), B = (b_{ij})，求\text{tr}(A^T B).$
 解：
 $$
-A^T=(a_{ji}),则同(2),tr(A^TB)=\sum_{i=1}^{n}\sum_{j=1}^{n}a_{ji}b_{ji}\\
+A^T=(a_{ji}),则同(2),tr(A^TB)=\sum_{i=1}^{n}\sum_{j=1}^{n}a_{ji}b_{ij}\\
 $$
 #### 6 设 $A, B 为 n 阶方阵, 求证: 方程 AB − BA = I_n 没有解$.
 $$
