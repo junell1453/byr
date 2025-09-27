@@ -52,9 +52,8 @@ x_1 - 3x_2 + x_4 = -1 \quad (2)\\
 (2)-3*(2): 7x_2+7x_3=7,x_2=0\\
 x_3=1,x_2=0代入(4)\implies 4x_1+14=6,x_1=-2\\
 代入(1)\implies -2+3+x_4=2,x_4=1 
-\end{matrix}
-\implies
-\begin{cases}
+\end{matrix}，
+即\begin{cases}
 x_1=-2\\
 x_2=0\\
 x_3=1\\
