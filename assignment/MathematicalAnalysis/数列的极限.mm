@@ -115,13 +115,13 @@
 </node>
 </node>
 </node>
-<node TEXT="一些补充推论和定义" FOLDED="true" POSITION="top_or_left" ID="ID_1090495667" CREATED="1759462089275" MODIFIED="1759462456891">
+<node TEXT="一些补充推论和定义" POSITION="top_or_left" ID="ID_1090495667" CREATED="1759462089275" MODIFIED="1759462456891">
 <edge COLOR="#7c0000"/>
-<node TEXT="归并的简化" FOLDED="true" ID="ID_128457516" CREATED="1759462100097" MODIFIED="1759462101340">
+<node TEXT="归并的简化" ID="ID_128457516" CREATED="1759462100097" MODIFIED="1759462101340">
 <node TEXT="\latex $数列a_n收敛的充要条件是它的奇数项和偶数项组成的子列\\收敛于同一个常数a" ID="ID_1209886095" CREATED="1759565024250" MODIFIED="1759565129756"/>
-<node TEXT="证明" FOLDED="true" ID="ID_567207325" CREATED="1759565122266" MODIFIED="1759565140236">
+<node TEXT="证明" ID="ID_567207325" CREATED="1759565122266" MODIFIED="1759565140236">
 <node TEXT="充分性：由归并原理显然可证" ID="ID_774044247" CREATED="1759565144706" MODIFIED="1759565195556"/>
-<node TEXT="\latex 必要性 $设数列a_n的子数列a_2k,a_(2k-1)收敛于同一个常数a,则有\\&#xa;\forall \epsilon&gt;0,\exists K_1,当k&gt;K_1时,有|a_2k -a|&lt;\epsilon\\&#xa;\forall \epsilon&gt;0,\exists K_2,当k&gt;K_2时,有|a_（2k-1） -a|&lt;\epsilon\\&#xa;设K_3=Max(K_1,K_2),K_4=2K_3+1\\&#xa;则当k&gt;K_4时,有2k_3+2&gt;2K_1,(2K_3+1)&gt;2K_2-1,所以有|a_2k -a|&lt;\epsilon ,\\&#xa;|a_(2k-1) -a|&lt;\epsilon&#xa;则当k&gt;K_4时，无论a_n的奇数项还是偶数项都满足|a_n-a|&lt;\epsilon\\&#xa;则a_n收敛于a" ID="ID_642629770" CREATED="1759565150618" MODIFIED="1759566206575"/>
+<node TEXT="\latex 必要性 $设数列a_n的子数列a_{2k},a_{2k-1}收敛于同一个常数a,则有\\&#xa;\forall \epsilon&gt;0,\exists K_1,当k&gt;K_1时,有|a_2k -a|&lt;\epsilon\\&#xa;\forall \epsilon&gt;0,\exists K_2,当k&gt;K_2时,有|a_（2k-1） -a|&lt;\epsilon\\&#xa;设K_3=Max(K_1,K_2),K_4=2K_3+1\\&#xa;则当k&gt;K_4时,有2k_3+2&gt;2K_1,(2K_3+1)&gt;2K_2-1,所以有|a_2k -a|&lt;\epsilon ,\\&#xa;|a_(2k-1) -a|&lt;\epsilon&#xa;则当k&gt;K_4时，无论a_n的奇数项还是偶数项都满足|a_n-a|&lt;\epsilon\\&#xa;则a_n收敛于a" ID="ID_642629770" CREATED="1759565150618" MODIFIED="1759721043869"/>
 </node>
 </node>
 <node TEXT="无穷小量和无穷大量" FOLDED="true" ID="ID_721869579" CREATED="1759462105420" MODIFIED="1759462107788">
