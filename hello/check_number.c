@@ -47,13 +47,16 @@ int main() {
                 if (ch=='+'||ch=='-'){
                     char next=getchar();
                     if(next=='0'){
+                        printf("+-0 detected\n");
                         consumeLine();
                         break;
                     }
+                    ch=next;
                 }
             }
 
             if (ch=='+'||ch=='-'){
+                printf("sign detected\n");
                 consumeLine();
                 break;
             }
