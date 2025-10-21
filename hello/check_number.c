@@ -22,13 +22,8 @@ int main() {
         int result=0;
         char ch;
         while(ch=getchar()){
-            if (ch=='\n')
-                printf("newline detected\n");
-            else
-                printf("check %c\n", ch);
             pos++;
             if (isValid(ch)==0){
-                printf("not a number\n");
                 consumeLine();
                 break;
             }
@@ -37,7 +32,6 @@ int main() {
                 if (ch=='0'){
                     char next=getchar();
                     if (next=='\n'||next==EOF){
-                        printf("end of line\n");
                         result=1;
                     }else{
                         consumeLine();
@@ -46,23 +40,23 @@ int main() {
                 }
                 if (ch=='+'||ch=='-'){
                     char next=getchar();
-                    if(next=='0'){
-                        printf("+-0 detected\n");
+                    if(next=='0'||next=='\n'||next==EOF){
                         consumeLine();
                         break;
                     }
                     ch=next;
                 }
+                if(ch=='\n'||ch==EOF){
+                    break;
+                }
             }
 
             if (ch=='+'||ch=='-'){
-                printf("sign detected\n");
                 consumeLine();
                 break;
             }
 
             if (ch=='\n'||ch==EOF){
-                printf("end of line\n");
                 result=1;
                 break;
             }
