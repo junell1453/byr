@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int isNumber(char ch){
+int isValid(char ch){
     if (ch>='0'&&ch<='9')
         return 1;
     if (ch=='+'||ch=='-'||ch=='\n'||ch==EOF)
@@ -20,7 +20,6 @@ int main() {
     {
         int pos=0;
         int result=0;
-        int flag=0;
         char ch;
         while(ch=getchar()){
             if (ch=='\n')
@@ -28,22 +27,33 @@ int main() {
             else
                 printf("check %c\n", ch);
             pos++;
-            if (isNumber(ch)==0){
+            if (isValid(ch)==0){
                 printf("not a number\n");
                 consumeLine();
                 break;
             }
 
-            if (pos==1&&ch=='0'){
-                consumeLine();
-                break;
+            if (pos==1){
+                if (ch=='0'){
+                    char next=getchar();
+                    if (next=='\n'||next==EOF){
+                        printf("end of line\n");
+                        result=1;
+                    }else{
+                        consumeLine();
+                    }
+                    break;
+                }
+                if (ch=='+'||ch=='-'){
+                    char next=getchar();
+                    if(next=='0'){
+                        consumeLine();
+                        break;
+                    }
+                }
             }
-                
 
-            if (pos==1&&(ch=='+'||ch=='-'))
-                flag=1;
-
-            if (flag==1&&pos==2&&ch=='0'){
+            if (ch=='+'||ch=='-'){
                 consumeLine();
                 break;
             }
