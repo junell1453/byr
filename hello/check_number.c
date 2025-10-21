@@ -7,7 +7,10 @@ int isNumber(char ch){
         return 1;
     return 0;
 }
-
+void consumeLine(){
+    char ch;
+    while((ch=getchar())!='\n'&&ch!=EOF);
+}
 
 int main() {
     int count=0;
@@ -18,7 +21,7 @@ int main() {
         int pos=0;
         int result=0;
         int flag=0;
-          char ch;
+        char ch;
         while(ch=getchar()){
             if (ch=='\n')
                 printf("newline detected\n");
@@ -27,17 +30,23 @@ int main() {
             pos++;
             if (isNumber(ch)==0){
                 printf("not a number\n");
+                consumeLine();
                 break;
             }
 
-            if (pos==1&&ch=='0')
+            if (pos==1&&ch=='0'){
+                consumeLine();
                 break;
+            }
+                
 
             if (pos==1&&(ch=='+'||ch=='-'))
                 flag=1;
 
-            if (flag==1&&pos==2&&ch=='0')
+            if (flag==1&&pos==2&&ch=='0'){
+                consumeLine();
                 break;
+            }
 
             if (ch=='\n'||ch==EOF){
                 printf("end of line\n");
