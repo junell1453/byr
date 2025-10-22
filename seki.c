@@ -1,38 +1,36 @@
 #include<stdio.h>
 int main(void){
-    int num,search=0,count=0,mark=0,pos1=0,pos=1,dig=0;
-    char input;
+    int num;;
     scanf("%d",&num);
     getchar();
-    for(count=0;count<num;count++){
-        mark=0;
-        pos1=0;
-        pos=1;
-        dig=0;
-        search=0;
-        while(1){
-            input=getchar();
-            if(input==48&&pos==1)
-            pos1=1;
-            if(!(input==43||input==45||(input>47&&input<58)||input==10))
-                 break;
-            if(input>47&&input<58)
-                dig++;
-            if(mark==1&&(input==48||input==43||input==45)){
-                break;}
-            else {mark=0;}
-            if(input==10){
-                if(dig!=0){
-                search=1;}
-                break;
-            }
-            if(mark==0&&(input==43||input==45))
-                mark=1;
-            if(pos==2&&pos1==1)
-                break;
+    for(int count=0;count<num;count++){
+        int isFirstSign=0;
+        int isFirst0=0;
+        int pos=0;
+        int result=0;
+        char input;
+        while(input=getchar()){
             pos++;
+            if (input=='0'){
+                if (pos==2){
+                    if (isFirst0==1||isFirstSign==1) break; //00 +0  -0
+                }
+                if(pos==1) isFirst0=1;
+            }else if(input=='+'||input=='-'){
+                if (pos>1) break;   //只能出现在第一位
+                isFirstSign=1;
+            }else if(input>='1'&&input<='9'){
+                if(isFirst0==1) break;  //前导0
+            }else if(input=='\n'){
+                if (pos==1) break;  //空输入
+                if (pos==2 && isFirstSign==1) break; //只有符号
+                result=1;
+                break;
+            }else{
+                break;  //非法字符
+            }    
         }
-        if(search==1)
+        if(result==1)
             printf("yes\n");
         else printf("no\n");
         while(input != '\n' && input != EOF) {
