@@ -1,12 +1,5 @@
 #include <stdio.h>
 
-int isValid(char ch){
-    if (ch>='0'&&ch<='9')
-        return 1;
-    if (ch=='+'||ch=='-'||ch=='\n'||ch==EOF)
-        return 1;
-    return 0;
-}
 void consumeLine(){
     char ch;
     while((ch=getchar())!='\n'&&ch!=EOF);
@@ -19,47 +12,32 @@ int main() {
     for(int row=0;row<count;row++)
     {
         int pos=0;
-        int result=0;
+        int result=1;
         char ch;
         while(ch=getchar()){
             pos++;
-            if (isValid(ch)==0){
-                consumeLine();
-                break;
-            }
-
             if (pos==1){
-                if (ch=='0'){
-                    char next=getchar();
-                    if (next=='\n'||next==EOF){
-                        result=1;
-                    }else{
-                        consumeLine();
-                    }
-                    break;
+                if (ch>='1'&&ch<='9') continue;
+                if(ch=='0'){
+                    ch=getchar();
+                    if (ch=='\n'||ch==EOF) break;
                 }
                 if (ch=='+'||ch=='-'){
-                    char next=getchar();
-                    if(next=='0'||next=='\n'||next==EOF){
-                        consumeLine();
+                    ch=getchar();
+                    if (ch>='1'&&ch<='9') continue;
+                    if (ch=='\n'||ch==EOF) {
+                        result=0;
                         break;
-                    }
-                    ch=next;
+                    }                    
                 }
-                if(ch=='\n'||ch==EOF){
-                    break;
-                }
+            }else{
+                if (ch>='0'&&ch<='9') continue;
+                if (ch=='\n'||ch==EOF) break;
             }
 
-            if (ch=='+'||ch=='-'){
-                consumeLine();
-                break;
-            }
-
-            if (ch=='\n'||ch==EOF){
-                result=1;
-                break;
-            }
+            result=0;
+            consumeLine();
+            break;
         }
         if (result==0)
             printf("no\n");
@@ -68,3 +46,19 @@ int main() {
     }
     return 0;
 }
+
+// 14
+// 0
+// -1
+// 999
+// -999
+// -0
+// +0
+// +200
+// 200
+// 1e10
+// -3e5
+// +
+// -
+// --1
+// ++5
